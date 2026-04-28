@@ -9,6 +9,14 @@ let displayPhone = phones =>{
     console.log(phones)
     let phonesContainer = document.getElementById('phones-container')
     phonesContainer.textContent = '';
+    let showAllBtn = document.getElementById('showAllBtn')
+    if(phones.length>12){
+        showAllBtn.classList.remove('hidden')
+    }
+    else{
+        showAllBtn.classList.add('hidden')
+    }
+    phones = phones.slice(0,12)
     phones.forEach(phone=>{
         let phoneCards = document.createElement('div')
         phoneCards.classList= `card bg-base-100 shadow-sm`
