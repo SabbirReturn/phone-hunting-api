@@ -36,11 +36,23 @@ let displayPhone = phones =>{
         `
         phonesContainer.appendChild(phoneCards)
     })
+    toggleLoadingDot(false)
 }
 
 let searchBtn = ()=> {
+    toggleLoadingDot(true)
     let searchField = document.getElementById('searchText')
     let searchValue = searchField.value;
     loadData(searchValue);
 }
 
+
+let toggleLoadingDot=(isLOad)=>{
+    let loadingDot = document.getElementById('loading-dot')
+    if(isLOad){
+        loadingDot.classList.remove('hidden')
+    }
+    else{
+        loadingDot.classList.add('hidden')
+    }
+}
