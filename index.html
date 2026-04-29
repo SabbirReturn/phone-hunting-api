@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,31 +8,27 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+
 <body>
     <header>
-        <h1 class="text-6xl" >Phone Hunting</h1>
+        <h1 class="text-6xl">Phone Hunting</h1>
     </header>
     <main class="container mx-auto">
         <section>
             <!-- Search phone -->
-             <div class="mt-5 mb-5 text-center">
+            <div class="mt-5 mb-5 text-center">
                 <label class="input">
                     <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <g
-                        stroke-linejoin="round"
-                        stroke-linecap="round"
-                        stroke-width="2.5"
-                        fill="none"
-                        stroke="currentColor"
-                        >
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="m21 21-4.3-4.3"></path>
+                        <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                            stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
                         </g>
                     </svg>
                     <input id="searchText" type="search" required placeholder="Search..." />
                 </label>
                 <button class="btn" onclick="searchBtn()">Search</button>
-             </div>
+            </div>
         </section>
         <section>
             <div class="text-center">
@@ -57,12 +54,29 @@
                 <button onclick="showAll()" id="showAllBtn" class="btn hidden mt-5">Show All</button>
             </div>
         </section>
+        <section>
+            <!-- Open the modal using ID.showModal() method -->
+            <button class="btn" onclick="show_modal_details.showModal()">open modal</button>
+            <dialog id="show_modal_details" class="modal modal-bottom sm:modal-middle">
+                <div class="modal-box">
+                    <h3 class="text-lg font-bold">Hello!</h3>
+                    <p class="py-4">Press ESC key or click the button below to close</p>
+                    <div class="modal-action">
+                        <form method="dialog">
+                            <!-- if there is a button in form, it will close the modal -->
+                            <button class="btn">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
+        </section>
     </main>
     <footer>
 
     </footer>
 
     <!-- Script -->
-     <script src="scripts/index.js"></script>
+    <script src="scripts/index.js"></script>
 </body>
+
 </html>

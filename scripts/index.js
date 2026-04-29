@@ -31,8 +31,8 @@ let displayPhone = (phones,isSlowAll) =>{
                     <div class="card-body">
                         <h2 class="card-title">${phone.phone_name}</h2>
                         <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                        <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Buy Now</button>
+                        <div class="card-actions justify-center">
+                        <button onclick= "handleShowDetails('${phone.slug}')" class="btn btn-primary">Details</button>
                         </div>
                     </div>
         
@@ -62,4 +62,11 @@ let toggleLoadingDot=(isLOad)=>{
 
 let showAll =()=>{
     searchBtn(true)
+}
+
+
+let handleShowDetails =async(id)=>{
+    let res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+    let data = await res.json();
+    console.log(data)
 }
