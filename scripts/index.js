@@ -1,4 +1,4 @@
-let loadData = async(searchText,isSlowAll)=>{
+let loadData = async(searchText=13,isSlowAll)=>{
     let res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
     let data = await res.json();
     let phones = data.data
@@ -6,7 +6,7 @@ let loadData = async(searchText,isSlowAll)=>{
 }
 
 let displayPhone = (phones,isSlowAll) =>{
-    console.log(phones)
+    // console.log(phones)
     
     let phonesContainer = document.getElementById('phones-container')
     phonesContainer.textContent = '';
@@ -68,5 +68,20 @@ let showAll =()=>{
 let handleShowDetails =async(id)=>{
     let res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
     let data = await res.json();
-    console.log(data)
+    let phone = data.data;
+    displayShowAllDetails(phone)
 }
+
+let displayShowAllDetails =(phone)=>{
+    console.log(phone)
+    let showPhoneDetailsContainer = document.getElementById('showPhoneDetailsContainer')
+    showPhoneDetailsContainer.innerHTML = `
+        <h1><span>Brand:</span>${phone.brand}</h1>
+        <img src="${phone.image}" alt="">
+        <p><span>Name:</span>${phone.name}</p>
+    
+    `
+    show_modal_details.showModal()
+}
+
+loadData();
