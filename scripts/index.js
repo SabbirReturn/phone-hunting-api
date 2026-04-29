@@ -1,22 +1,25 @@
-let loadData = async(searchText)=>{
+let loadData = async(searchText,isSlowAll)=>{
     let res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
     let data = await res.json();
     let phones = data.data
-    displayPhone(phones)
+    displayPhone(phones,isSlowAll)
 }
 
-let displayPhone = phones =>{
+let displayPhone = (phones,isSlowAll) =>{
     console.log(phones)
+    
     let phonesContainer = document.getElementById('phones-container')
     phonesContainer.textContent = '';
     let showAllBtn = document.getElementById('showAllBtn')
-    if(phones.length>12){
+    if(phones.length>12 && !isSlowAll){
         showAllBtn.classList.remove('hidden')
     }
     else{
         showAllBtn.classList.add('hidden')
     }
-    phones = phones.slice(0,12)
+    if(!isSlowAll){
+        phones = phones.slice(0,12)
+    }
     phones.forEach(phone=>{
         let phoneCards = document.createElement('div')
         phoneCards.classList= `card bg-base-100 shadow-sm`
@@ -39,11 +42,11 @@ let displayPhone = phones =>{
     toggleLoadingDot(false)
 }
 
-let searchBtn = ()=> {
+let searchBtn = (isSlowAll)=> {
     toggleLoadingDot(true)
     let searchField = document.getElementById('searchText')
     let searchValue = searchField.value;
-    loadData(searchValue);
+    loadData(searchValue,isSlowAll);
 }
 
 
@@ -55,4 +58,8 @@ let toggleLoadingDot=(isLOad)=>{
     else{
         loadingDot.classList.add('hidden')
     }
+}
+
+let showAll =()=>{
+    searchBtn(true)
 }
